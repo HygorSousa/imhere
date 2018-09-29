@@ -1,4 +1,4 @@
-package br.com.heimdall.controller;
+package br.com.projetopi1.controller;
 
 import br.com.heimdall.application.Util;
 import br.com.heimdall.factory.JPAFactory;

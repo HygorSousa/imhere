@@ -1,4 +1,4 @@
-package br.com.heimdall.application;
+package br.com.projetopi1.application;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.application.FacesMessage.Severity;

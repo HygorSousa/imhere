@@ -1,4 +1,4 @@
-package br.com.heimdall.model;
+package br.com.projetopi1.model;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

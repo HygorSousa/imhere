@@ -1,4 +1,4 @@
-package br.com.heimdall.factory;
+package br.com.projetopi1.factory;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
