@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:p="http://primefaces.org/ui"
+                template="/template/template.xhtml">
+    <ui:define name="conteudo">
+        <style type="text/css">
+
+        </style>
+        <div class="ui-g-12">
+            <h:form id="formDados">
+
+                <div style="text-align: center;"
+                     class="ui-fluid #{layoutMB.flat ? 'ui-flat':''} no-border">
+                    <h:graphicImage library="images" name="logo3.png" height="400" styleClass="logo"/>
+                </div>
+                <br/>
+                <p:outputPanel style="display: flex; justify-content: space-evenly;">
+                    <p:commandButton styleClass="btn-warning btn-lg"
+                                     value="Login" id="btn-login"
+                                     style="width: auto"
+                                     icon="fa fa-unlock"/>
+
+                    <p:commandButton styleClass="btn-warning btn-lg"
+                                     value="Mapa das Salas" id="btn-map"
+                                     style="width: auto"
+                                     icon="fa fa-map"/>
+                </p:outputPanel>
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>

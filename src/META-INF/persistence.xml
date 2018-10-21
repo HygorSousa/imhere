@@ -3,13 +3,13 @@
              version="2.1"
              xmlns="http://xmlns.jcp.org/xml/ns/persistence"
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-    <persistence-unit name="ProjetoPI1">
+    <persistence-unit name="I'm Here">
 
-        <class>br.com.projetopi1.model.DefaultEntity</class>
+        <class>br.com.imhere.model.DefaultEntity</class>
 
         <properties>
             <property name="javax.persistence.jdbc.url"
-                      value="jdbc:postgresql://localhost:5432/heimdall?useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8"/>
+                      value="jdbc:postgresql://localhost:5432/imhere?useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8"/>
 
             <property name="javax.persistence.jdbc.driver"
                       value="org.postgresql.Driver"/>

@@ -1,4 +1,4 @@
-package br.com.projetopi1.application;
+package br.com.imhere.application;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.application.FacesMessage.Severity;

@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+    <title>I'm here</title>
+    <h:outputStylesheet library="webjars" name="font-awesome/4.4.0/css/font-awesome.css"/>
+    <h:outputStylesheet name="css/styleSheetTemplate.css"/>
+    <h:outputStylesheet name="css/styleSheet.css"/>
+    <h:outputScript name="js/admintemplate.js"/>
+</h:head>
+
+<h:body>
+    <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()"/>
+
+    <div class="wrapper">
+        <div class="box header">
+            <h:graphicImage library="images" name="logo.png" height="48" width="25" styleClass="logo"/>
+            <h:graphicImage library="images" name="logo2.png" height="40" styleClass="logo"/>
+        </div>
+
+        <div class="box sidebar">
+            <ui:insert name="menu">
+                <h1 class="title">Menu</h1>
+                <h:form>
+
+                    <h:commandLink value="Lotações de Salas"
+                                   action="lotacao.xhtml"/> <br/>
+
+                    <h:commandLink value="Cadastro de Salas"
+                                   action="sala.xhtml"/> <br/>
+
+                    <h:commandLink value="Cadastro de Professor"
+                                   action="professor.xhtml"/> <br/>
+
+                    <h:commandLink value="Cadastro de Responsável"
+                                   action="responsavel.xhtml"/> <br/>
+
+                    <h:commandLink value="Cadastro de Matriz"
+                                   action="matriz-curricular.xhtml"/> <br/>
+                </h:form>
+            </ui:insert>
+        </div>
+
+        <div class="box content">
+            <ui:insert name="conteudo">
+            </ui:insert>
+        </div>
+
+        <div class="box footer" style="text-align: center;">
+            <h:outputText value="2018 - Hygor de Sousa - Todos os direitos reservados."/>
+        </div>
+    </div>
+
+    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+        <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+        <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
+    </p:confirmDialog>
+</h:body>
+</html>

@@ -1,4 +1,4 @@
-package br.com.projetopi1.model;
+package br.com.imhere.model;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

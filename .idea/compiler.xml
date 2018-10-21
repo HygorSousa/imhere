@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="projetopi1" />
+        <module name="imhere" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="projetopi1" target="10" />
+      <module name="imhere" target="10" />
     </bytecodeTargetLevel>
   </component>
 </project>

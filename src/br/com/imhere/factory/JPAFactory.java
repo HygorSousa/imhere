@@ -1,4 +1,4 @@
-package br.com.projetopi1.factory;
+package br.com.imhere.factory;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
