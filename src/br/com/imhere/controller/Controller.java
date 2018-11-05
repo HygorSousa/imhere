@@ -3,11 +3,10 @@ package br.com.imhere.controller;
 import br.com.imhere.application.Util;
 import br.com.imhere.factory.JPAFactory;
 import br.com.imhere.model.DefaultEntity;
-import br.com.imhere.repository.DefaultRepository;
+import br.com.imhere.repository.Repository;
 
 import javax.persistence.EntityManager;
 import java.io.Serializable;
-import java.lang.reflect.InvocationTargetException;
 
 public abstract class Controller<T extends DefaultEntity<T>> implements Serializable {
 
@@ -18,7 +17,7 @@ public abstract class Controller<T extends DefaultEntity<T>> implements Serializ
     public abstract void limpar();
 
     public T incluir() {
-        DefaultRepository<T> repository = getRepository(em);
+        Repository<T> repository = new Repository<>(em, clazz);
         getEntityManager().getTransaction().begin();
         T result = repository.salvar(getEntity());
         getEntityManager().getTransaction().commit();
@@ -28,7 +27,7 @@ public abstract class Controller<T extends DefaultEntity<T>> implements Serializ
     }
 
     public T alterar() {
-        DefaultRepository<T> repository = getRepository(em);
+        Repository<T> repository = new Repository<>(em, clazz);
 
         getEntityManager().getTransaction().begin();
 
@@ -41,7 +40,7 @@ public abstract class Controller<T extends DefaultEntity<T>> implements Serializ
     }
 
     public void remover() {
-        DefaultRepository<T> repository = getRepository(em);
+        Repository<T> repository = new Repository<>(em, clazz);
 
         getEntityManager().getTransaction().begin();
 
@@ -64,16 +63,4 @@ public abstract class Controller<T extends DefaultEntity<T>> implements Serializ
         return em;
     }
 
-    protected DefaultRepository<T> getRepository(EntityManager em) {
-        try {
-            return (DefaultRepository<T>) Class.forName(entity.getClass().getName().replace("model", "repository") + "Repository")
-                    .getConstructor(EntityManager.class)
-                    .newInstance(em);
-        } catch (InstantiationException | IllegalAccessException
-                | ClassNotFoundException | NoSuchMethodException | SecurityException | IllegalArgumentException | InvocationTargetException e) {
-            System.out.println("Não existe um repositório (repository) para o modelo " + getEntity().getClass().getName());
-            e.printStackTrace();
-        }
-        return null;
-    }
 }
