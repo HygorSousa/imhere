@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template/template.xhtml">
+    <ui:define name="conteudo">
+        <div class="ui-g-12">
+            <p:panel styleClass="card no-border" toggleable="true"
+                     toggleSpeed="300">
+                <h:form id="formDados">
+                    <h1>.: Disciplinas :.
+                        <p:commandButton id="btnPesquisar"
+                                         styleClass="btnAuto pull-right btn-fatal"
+                                         actionListener="#{disciplinaController.abrirListDisciplina}"
+                                         value="Consultar Disciplinas"
+                                         process="btnPesquisar" icon="fa fa-search">
+                            <p:ajax event="dialogReturn" update="formDados"/>
+                        </p:commandButton>
+                    </h1>
+
+                    <div style="text-align: left;"
+                         class="ui-fluid #{layoutMB.flat ? 'ui-flat':''} ">
+                        <p:panelGrid id="gridDados" columns="2"
+                                     columnClasses="ui-grid-col-6, ui-grid-col-6" layout="grid"
+                                     styleClass="ui-fluid card">
+
+                            <h:panelGroup>
+                                <div class="ui-material">
+                                    <p:inputText id="nomeInput"
+                                                 value="#{disciplinaController.entity.nome}"/>
+                                    <p:outputLabel value="Nome" for="nomeInput"/>
+                                </div>
+                            </h:panelGroup>
+
+                            <h:panelGroup>
+                                <div class="ui-material">
+                                    <p:selectOneMenu id="cursoSelect"
+                                                     value="#{disciplinaController.entity.curso}"
+                                                     converter="cursoConverter">
+                                        <f:selectItem itemLabel="Selecione um Curso!"/>
+                                        <f:selectItems
+                                                value="#{disciplinaController.listaCursos}"
+                                                var="curso"
+                                                itemValue="#{curso}"
+                                                itemLabel="#{curso.nome}"/>
+                                    </p:selectOneMenu>
+                                    <p:outputLabel value="Curso" for="cursoSelect"/>
+                                </div>
+                            </h:panelGroup>
+
+                            <h:panelGroup>
+                                <div class="ui-material">
+                                    <p:outputLabel value="Ativo: " for="ativoSwitch"/>
+                                    <p:inputSwitch id="ativoSwitch" required="true"
+                                                   value="#{disciplinaController.entity.ativo}"/>
+                                </div>
+                            </h:panelGroup>
+
+                        </p:panelGrid>
+                        <div class="text-center ui-material">
+                            <p:commandButton id="btnIncluir"
+                                             value="Incluir" icon="fa fa-plus"
+                                             process="@this,gridDados" update="formDados, msgs"
+                                             styleClass="btnAuto btn-fatal"
+                                             disabled="#{disciplinaController.entity.id != null}"
+                                             actionListener="#{disciplinaController.incluir}"/>
+                            <p:commandButton value="Alterar" icon="fa fa-edit"
+                                             process="@this, gridDados" update="gridDados"
+                                             styleClass="btnAuto btn-fatal"
+                                             disabled="#{disciplinaController.entity.id == null}"
+                                             actionListener="#{disciplinaController.alterar}"/>
+                            <p:commandButton value="Excluir" icon="fa fa-remove"
+                                             process="@this, gridDados" update="gridDados"
+                                             styleClass="btnAuto btn-fatal"
+                                             disabled="#{disciplinaController.entity.id == null}"
+                                             actionListener="#{disciplinaController.remover}"/>
+                            <p:commandButton value="Limpar" icon="fa fa-eraser"
+                                             process="@this,gridDados" update="gridDados"
+                                             styleClass="btnAuto btn-fatal"
+                                             actionListener="#{disciplinaController.limpar}"/>
+                        </div>
+                    </div>
+                </h:form>
+            </p:panel>
+        </div>
+    </ui:define>
+</ui:composition>
+</html>

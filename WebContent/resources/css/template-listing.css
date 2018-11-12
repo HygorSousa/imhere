@@ -1,0 +1,111 @@
+#dialogBody {
+    overflow: hidden;
+}
+
+#dialogBody .titleDialog {
+    margin-bottom: 20px;
+}
+
+#dialogBody .titleDialog h3 {
+    font-size: 24px;
+    font-weight: 400;
+    margin: 0px 0;
+}
+
+#dialogBody .titleDialog #closeButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#dialogBody .lightTable {
+    margin-top: 10px;
+}
+
+#dialogBody .inputBtn .ui-button {
+    position: absolute;
+    top: -10px;
+    right: 0;
+}
+
+.Wid5 {
+    width: 5% !important;
+}
+
+.Wid10 {
+    width: 10% !important;
+}
+
+.Wid15 {
+    width: 15% !important;
+}
+
+.Wid20 {
+    width: 20% !important;
+}
+
+.Wid25 {
+    width: 25% !important;
+}
+
+.Wid30 {
+    width: 30% !important;
+}
+
+.Wid35 {
+    width: 35% !important;
+}
+
+.Wid40 {
+    width: 40% !important;
+}
+
+.Wid45 {
+    width: 45% !important;
+}
+
+.Wid50 {
+    width: 50% !important;
+}
+
+.Wid55 {
+    width: 55% !important;
+}
+
+.Wid60 {
+    width: 60% !important;
+}
+
+.Wid65 {
+    width: 65% !important;
+}
+
+.Wid70 {
+    width: 70% !important;
+}
+
+.Wid75 {
+    width: 75% !important;
+}
+
+.Wid80 {
+    width: 80% !important;
+}
+
+.Wid85 {
+    width: 85% !important;
+}
+
+.Wid90 {
+    width: 90% !important;
+}
+
+.Wid95 {
+    width: 95% !important;
+}
+
+.Wid100 {
+    width: 100% !important;
+}
+
+/*# sourceMappingURL=template-listing.css.map */

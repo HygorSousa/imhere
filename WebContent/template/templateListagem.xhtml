@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+    <f:facet name="first">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+    </f:facet>
+    <h:outputStylesheet name="css/template-listing.css"/>
+
+    <script type="text/javascript">
+        var alreadyClose = false;
+        $(document).keyup(function (e) {
+            if (e.keyCode == 27 &amp;&amp; !alreadyClose) {
+                alreadyClose = true;
+                setTimeout(function () {
+                    $(".closeButtonDialog").click();
+                }, 50);
+            }
+        });
+    </script>
+</h:head>
+<h:body id="dialogBody">
+    <div class="titleDialog">
+        <h3>
+            <ui:insert name="titulo">Heimdall</ui:insert>
+        </h3>
+        <ui:insert name="closeButton">
+            <p:commandLink styleClass="ui-icon ui-icon-closethick closeButtonDialog"
+                           actionListener="#{defaultSimpleListController.onSelect(null)}"/>
+        </ui:insert>
+    </div>
+
+    <div id="wrapper" class="OvAuto ModalContent">
+        <div id="wrapperIndent" class="ui-fluid">
+            <p:blockUI block="dialogBody" trigger=":form:dataTable"/>
+            <p:blockUI block="dialogBody" trigger="closeButton"/>
+            <ui:insert name="conteudoCorpo">
+                Template
+            </ui:insert>
+            <p:growl id="msgs" showDetail="true" showSummary="false" sticky="true"/>
+        </div>
+    </div>
+</h:body>
+
+</html>

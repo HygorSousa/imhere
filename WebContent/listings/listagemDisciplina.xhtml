@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/template/templateListagem.xhtml">
+
+    <ui:define name="titulo"> Listagem de Disciplinas </ui:define>
+    <ui:define name="closeButton">
+        <p:commandLink id="closeButton"
+                       styleClass="ui-icon ui-icon-closethick closeButtonDialog"
+                       actionListener="#{disciplinaListController.closeDialog()}"/>
+    </ui:define>
+    <ui:define name="conteudoCorpo">
+        <f:metadata>
+            <f:viewParam name="chave" value="#{disciplinaListController.chave}"/>
+            <f:viewAction action="#{disciplinaListController.onLoad}"/>
+        </f:metadata>
+        <h:form id="form">
+            <p:focus context="form"/>
+            <p:dataTable id="dataTable" lazy="true"
+                         value="#{disciplinaListController.lazyModel}"
+                         emptyMessage="Nenhum registro encontrado" var="objeto"
+                         styleClass="lightTable" rowIndexVar="indice" rows="20"
+                         scrollRows="20" scrollHeight="290" liveScroll="true"
+                         scrollable="true" selectionMode="single">
+                <p:ajax event="rowSelect"
+                        listener="#{disciplinaListController.onRowSelect}"
+                />
+                <f:facet name="header">
+                    #{disciplinaListController.lazyModel.rowCount} registro(s) encontrado(s)
+                </f:facet>
+                <p:column styleClass="Wid10 text-center">
+                    <f:facet name="header">#</f:facet>
+                    <h:outputText value="#{indice + 1}"/>
+                </p:column>
+                <p:column styleClass="Wid50">
+                    <f:facet name="header">Nome</f:facet>
+                    <h:outputText value="#{objeto.disciplina}"/>
+                </p:column>
+                <p:column styleClass="Wid40">
+                    <f:facet name="header">Curso</f:facet>
+                    <h:outputText value="#{objeto.curso}"/>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </ui:define>
+</ui:composition>
