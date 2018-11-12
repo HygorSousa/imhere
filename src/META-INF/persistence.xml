@@ -6,6 +6,17 @@
     <persistence-unit name="I'm Here">
 
         <class>br.com.imhere.model.DefaultEntity</class>
+        <class>br.com.imhere.model.Aluno</class>
+        <class>br.com.imhere.model.Atividade</class>
+        <class>br.com.imhere.model.Coordenador</class>
+        <class>br.com.imhere.model.Curso</class>
+        <class>br.com.imhere.model.Disciplina</class>
+        <class>br.com.imhere.model.Frequencia</class>
+        <class>br.com.imhere.model.MatrizCurricular</class>
+        <class>br.com.imhere.model.Professor</class>
+        <class>br.com.imhere.model.Semestre</class>
+        <class>br.com.imhere.model.Usuario</class>
+
 
         <properties>
             <property name="javax.persistence.jdbc.url"
