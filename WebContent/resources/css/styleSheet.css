@@ -5,3 +5,11 @@
 input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 30px white inset;
 }
+
+.ui-growl.ui-widget {
+    left: auto !important;
+}
+
+.btnAuto {
+    width: auto !important;
+}

@@ -2,7 +2,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 <ui:composition template="/template/template.xhtml">
     <ui:define name="conteudo">
@@ -10,11 +9,11 @@
             <p:panel styleClass="card no-border" toggleable="true"
                      toggleSpeed="300">
                 <h:form id="formDados">
-                    <h1>.: Disciplinas :.
+                    <h1>.: Atividades :.
                         <p:commandButton id="btnPesquisar"
                                          styleClass="btnAuto pull-right btn-primary"
-                                         actionListener="#{disciplinaController.abrirListDisciplina}"
-                                         value="Consultar Disciplinas"
+                                         actionListener="#{atividadeController.abrirListAtividade}"
+                                         value="Consultar Atividades"
                                          process="btnPesquisar" icon="fa fa-search">
                             <p:ajax event="dialogReturn" update="formDados"/>
                         </p:commandButton>
@@ -28,33 +27,37 @@
 
                             <h:panelGroup>
                                 <div class="ui-material">
-                                    <p:inputText id="nomeInput"
-                                                 value="#{disciplinaController.entity.nome}"/>
+                                    <p:inputText id="pinInput" disabled="true"
+                                                 value="#{atividadeController.entity.pin}"/>
                                     <p:outputLabel value="Nome" for="nomeInput"/>
                                 </div>
                             </h:panelGroup>
 
                             <h:panelGroup>
                                 <div class="ui-material">
-                                    <p:selectOneMenu id="cursoSelect"
-                                                     value="#{disciplinaController.entity.curso}"
-                                                     converter="cursoConverter">
-                                        <f:selectItem itemLabel="Selecione um Curso!"/>
-                                        <f:selectItems
-                                                value="#{disciplinaController.listaCursos}"
-                                                var="curso"
-                                                itemValue="#{curso}"
-                                                itemLabel="#{curso.nome}"/>
-                                    </p:selectOneMenu>
-                                    <p:outputLabel value="Curso" for="cursoSelect"/>
+                                    <p:calendar id="dataInput" mask="true" pattern="dd/MM/yyyy"
+                                                value="#{atividadeController.entity.data}"
+                                                showOn="button"/>
+                                    <p:outputLabel value="Data" for="dataInput"/>
                                 </div>
                             </h:panelGroup>
 
                             <h:panelGroup>
                                 <div class="ui-material">
-                                    <p:outputLabel value="Ativo: " for="ativoSwitch"/>
-                                    <p:inputSwitch id="ativoSwitch" required="true"
-                                                   value="#{disciplinaController.entity.ativo}"/>
+                                    <p:inputText id="duracaoInput"
+                                                 value="#{atividadeController.entity.duracao}"/>
+                                    <p:outputLabel value="Duração" for="duracaoInput"/>
+                                </div>
+                            </h:panelGroup>
+                        </p:panelGrid>
+                        <p:panelGrid id="gridDados2" columns="1"
+                                     columnClasses="ui-grid-col-6, ui-grid-col-6" layout="grid"
+                                     styleClass="ui-fluid card">
+                            <h:panelGroup>
+                                <div class="ui-material">
+                                    <p:inputTextarea id="nomeInput"
+                                                     value="#{atividadeController.entity.descricao}"/>
+                                    <p:outputLabel value="Nome" for="nomeInput"/>
                                 </div>
                             </h:panelGroup>
 
@@ -64,22 +67,22 @@
                                              value="Incluir" icon="fa fa-plus"
                                              process="@this,gridDados" update="formDados, msgs"
                                              styleClass="btnAuto btn-primary"
-                                             disabled="#{disciplinaController.entity.id != null}"
-                                             actionListener="#{disciplinaController.incluir}"/>
+                                             disabled="#{atividadeController.entity.id != null}"
+                                             actionListener="#{atividadeController.incluir}"/>
                             <p:commandButton value="Alterar" icon="fa fa-edit"
                                              process="@this, gridDados" update="gridDados"
                                              styleClass="btnAuto btn-primary"
-                                             disabled="#{disciplinaController.entity.id == null}"
-                                             actionListener="#{disciplinaController.alterar}"/>
+                                             disabled="#{atividadeController.entity.id == null}"
+                                             actionListener="#{atividadeController.alterar}"/>
                             <p:commandButton value="Excluir" icon="fa fa-remove"
                                              process="@this, gridDados" update="gridDados"
                                              styleClass="btnAuto btn-primary"
-                                             disabled="#{disciplinaController.entity.id == null}"
-                                             actionListener="#{disciplinaController.remover}"/>
+                                             disabled="#{atividadeController.entity.id == null}"
+                                             actionListener="#{atividadeController.remover}"/>
                             <p:commandButton value="Limpar" icon="fa fa-eraser"
                                              process="@this,gridDados" update="gridDados"
                                              styleClass="btnAuto btn-primary"
-                                             actionListener="#{disciplinaController.limpar}"/>
+                                             actionListener="#{atividadeController.limpar}"/>
                         </div>
                     </div>
                 </h:form>
