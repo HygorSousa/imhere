@@ -17,6 +17,12 @@ public class AlunoController extends Controller<Aluno> {
     }
 
     @Override
+    public Aluno incluir() {
+
+        return super.incluir();
+    }
+
+    @Override
     public void limpar() {
         setEntity(new Aluno());
     }

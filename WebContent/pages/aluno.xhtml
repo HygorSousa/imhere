@@ -19,43 +19,23 @@
                         </p:commandButton>
                     </h1>
 
-                    <div style="text-align: left;"
-                         class="ui-fluid #{layoutMB.flat ? 'ui-flat':''} ">
-                        <p:panelGrid id="gridDados" columns="2"
-                                     columnClasses="ui-grid-col-6, ui-grid-col-6" layout="grid"
+                    <div class="ui-fluid #{layoutMB.flat ? 'ui-flat':''} ">
+                        <p:panelGrid id="gridDados" columns="4" layout="grid"
+                                     columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4"
                                      styleClass="ui-fluid card">
 
-                            <h:panelGroup>
-                                <div class="ui-material">
-                                    <p:inputText id="nomeInput"
-                                                 value="#{alunoController.entity.nome}"/>
-                                    <p:outputLabel value="Nome" for="nomeInput"/>
-                                </div>
-                            </h:panelGroup>
-
-                            <h:panelGroup>
-                                <div class="ui-material">
-                                    <p:inputText id="cpfInput"
-                                                 value="#{alunoController.entity.cpf}"/>
-                                    <p:outputLabel value="CPF" for="cpfInput"/>
-                                </div>
-                            </h:panelGroup>
-
-                            <h:panelGroup>
-                                <div class="ui-material">
-                                    <p:inputText id="matriculaInput"
-                                                 value="#{alunoController.entity.matricula}"/>
-                                    <p:outputLabel value="Matrícula" for="matriculaInput"/>
-                                </div>
-                            </h:panelGroup>
-
-                            <h:panelGroup>
-                                <div class="ui-material">
-                                    <p:inputText id="emailInput" type="email"
-                                                 value="#{alunoController.entity.email}"/>
-                                    <p:outputLabel value="Email" for="emailInput"/>
-                                </div>
-                            </h:panelGroup>
+                            <p:outputLabel value="Nome" for="nomeInput"/>
+                            <p:inputText id="nomeInput"
+                                         value="#{alunoController.entity.nome}"/>
+                            <p:outputLabel value="CPF" for="cpfInput"/>
+                            <p:inputText id="cpfInput"
+                                         value="#{alunoController.entity.cpf}"/>
+                            <p:outputLabel value="Matrícula" for="matriculaInput"/>
+                            <p:inputText id="matriculaInput"
+                                         value="#{alunoController.entity.matricula}"/>
+                            <p:outputLabel value="Email" for="emailInput"/>
+                            <p:inputText id="emailInput" type="email"
+                                         value="#{alunoController.entity.email}"/>
                         </p:panelGrid>
 
                         <div class="text-center ui-material">

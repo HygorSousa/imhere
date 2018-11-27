@@ -1,7 +1,6 @@
 package br.com.imhere.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Aluno extends DefaultEntity<Aluno> {
@@ -18,6 +17,10 @@ public class Aluno extends DefaultEntity<Aluno> {
     private String email;
 
     private String biometria;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @MapsId
+    private Usuario usuario;
 
     @Override
     public Integer getId() {
@@ -67,5 +70,13 @@ public class Aluno extends DefaultEntity<Aluno> {
 
     public void setBiometria(String biometria) {
         this.biometria = biometria;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

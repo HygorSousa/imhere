@@ -1,7 +1,9 @@
 package br.com.imhere.model;
 
-import javax.persistence.*;
-import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Usuario extends DefaultEntity<Usuario> {
@@ -13,6 +15,8 @@ public class Usuario extends DefaultEntity<Usuario> {
     private String login;
 
     private String senha;
+
+    private TipoUsuario tipoUsuario;
 
 
     @Override
@@ -39,5 +43,13 @@ public class Usuario extends DefaultEntity<Usuario> {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public TipoUsuario getTipoUsuario() {
+        return tipoUsuario;
+    }
+
+    public void setTipoUsuario(TipoUsuario tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
     }
 }
