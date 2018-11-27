@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <h:outputStylesheet name="css/styleSheetTemplateIndex.css"/>
+    <h:outputStylesheet name="css/styleSheet.css"/>
+</h:head>
+
+<h:body styleClass="hold-transition login-page">
+    <p:growl autoUpdate="true" sticky="true"/>
+
+    <div class="login-box">
+        <div class="login-logo">
+            <p:link href="index.xhtml">
+                <h:graphicImage library="images" name="logo3.png" styleClass="logo30"/>
+            </p:link>
+        </div>
+        <div class="login-box-body">
+            <h:form>
+                <p:messages closable="true"/>
+                <p:panelGrid columns="1"
+                             columnClasses="ui-grid-col-12"
+                             layout="grid" styleClass="ui-fluid  ">
+                    <h:panelGroup>
+                        <div class="ui-material">
+                            <p:inputText value="#{loginController.usuario.login}" type="email"
+                                         required="true" autocomplete="off"
+                                         requiredMessage="O email é obrigatório."/>
+                            <p:outputLabel value="Email"/>
+                        </div>
+                    </h:panelGroup>
+                    <h:panelGroup>
+                        <div class="ui-material">
+                            <p:inputText value="#{loginController.usuario.senha}" type="password"
+                                         required="true" autocomplete="off"
+                                         requiredMessage="A senha é obrigatória."/>
+                            <p:outputLabel value="Senha"/>
+                        </div>
+                    </h:panelGroup>
+                    <h:panelGroup styleClass="text-center">
+                        <p:commandButton
+                                styleClass="btn-fatal"
+                                value="Entrar"
+                                action="#{loginController.entrar}"
+                                process="@form"
+                                update="@form"/>
+                    </h:panelGroup>
+
+                    <a href="#">Esqueci a senha</a><br/>
+                </p:panelGrid>
+            </h:form>
+        </div>
+    </div>
+</h:body>
+</html>

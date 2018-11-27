@@ -26,11 +26,9 @@
                                      styleClass="ui-fluid card">
 
                             <h:panelGroup>
-                                <div class="ui-material">
-                                    <p:inputText id="nomeInput"
-                                                 value="#{cursoController.entity.nome}"/>
-                                    <p:outputLabel value="Nome" for="nomeInput"/>
-                                </div>
+                                <h:outputText value="Nome" for="nomeInput"/>
+                                <p:inputText id="nomeInput"
+                                             value="#{cursoController.entity.nome}"/>
                             </h:panelGroup>
 
 
@@ -42,16 +40,19 @@
                                              styleClass="btnAuto btn-primary"
                                              disabled="#{cursoController.entity.id != null}"
                                              actionListener="#{cursoController.incluir}"/>
+
                             <p:commandButton value="Alterar" icon="fa fa-edit"
                                              process="@this, gridDados" update="gridDados"
                                              styleClass="btnAuto btn-primary"
                                              disabled="#{cursoController.entity.id == null}"
                                              actionListener="#{cursoController.alterar}"/>
+
                             <p:commandButton value="Excluir" icon="fa fa-remove"
                                              process="@this, gridDados" update="gridDados"
                                              styleClass="btnAuto btn-primary"
                                              disabled="#{cursoController.entity.id == null}"
                                              actionListener="#{cursoController.remover}"/>
+
                             <p:commandButton value="Limpar" icon="fa fa-eraser"
                                              process="@this,gridDados" update="gridDados"
                                              styleClass="btnAuto btn-primary"

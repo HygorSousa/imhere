@@ -20,22 +20,34 @@
                     </h1>
 
                     <div class="ui-fluid #{layoutMB.flat ? 'ui-flat':''} ">
-                        <p:panelGrid id="gridDados" columns="4" layout="grid"
-                                     columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4"
+                        <p:panelGrid id="gridDados" columns="2" layout="grid"
+                                     columnClasses="ui-grid-col-6, ui-grid-col-6"
                                      styleClass="ui-fluid card">
 
-                            <p:outputLabel value="Nome" for="nomeInput"/>
-                            <p:inputText id="nomeInput"
-                                         value="#{alunoController.entity.nome}"/>
-                            <p:outputLabel value="CPF" for="cpfInput"/>
-                            <p:inputText id="cpfInput"
-                                         value="#{alunoController.entity.cpf}"/>
-                            <p:outputLabel value="Matrícula" for="matriculaInput"/>
-                            <p:inputText id="matriculaInput"
-                                         value="#{alunoController.entity.matricula}"/>
-                            <p:outputLabel value="Email" for="emailInput"/>
-                            <p:inputText id="emailInput" type="email"
-                                         value="#{alunoController.entity.email}"/>
+                            <h:panelGroup>
+                                <h:outputText value="Nome" for="nomeInput"/>
+                                <p:inputText id="nomeInput"
+                                             value="#{alunoController.entity.nome}"/>
+                            </h:panelGroup>
+
+                            <h:panelGroup>
+                                <h:outputText value="CPF" for="cpfInput"/>
+                                <p:inputText id="cpfInput"
+                                             value="#{alunoController.entity.cpf}"/>
+                            </h:panelGroup>
+
+                            <h:panelGroup>
+                                <h:outputText value="Matrícula" for="matriculaInput"/>
+                                <p:inputText id="matriculaInput"
+                                             value="#{alunoController.entity.matricula}"/>
+                            </h:panelGroup>
+
+                            <h:panelGroup>
+                                <h:outputText value="Email" for="emailInput"/>
+                                <p:inputText id="emailInput" type="email"
+                                             value="#{alunoController.entity.email}"/>
+                            </h:panelGroup>
+
                         </p:panelGrid>
 
                         <div class="text-center ui-material">
@@ -45,16 +57,19 @@
                                              styleClass="btnAuto btn-primary"
                                              disabled="#{alunoController.entity.id != null}"
                                              actionListener="#{alunoController.incluir}"/>
+
                             <p:commandButton value="Alterar" icon="fa fa-edit"
                                              process="@this, gridDados" update="gridDados"
                                              styleClass="btnAuto btn-primary"
                                              disabled="#{alunoController.entity.id == null}"
                                              actionListener="#{alunoController.alterar}"/>
+
                             <p:commandButton value="Excluir" icon="fa fa-remove"
                                              process="@this, gridDados" update="gridDados"
                                              styleClass="btnAuto btn-primary"
                                              disabled="#{alunoController.entity.id == null}"
                                              actionListener="#{alunoController.remover}"/>
+
                             <p:commandButton value="Limpar" icon="fa fa-eraser"
                                              process="@this,gridDados" update="gridDados"
                                              styleClass="btnAuto btn-primary"

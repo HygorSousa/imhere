@@ -5,7 +5,6 @@ import br.com.imhere.model.Usuario;
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
@@ -30,11 +29,11 @@ public class SecurityFilter implements Filter {
         if (session != null)
             usuario = (Usuario) session.getAttribute("usuarioLogado");
 
-        if (usuario == null) {
-            ((HttpServletResponse) response).sendRedirect("/topicos2/login.xhtml");
-        } else {
+  /*      if (usuario == null)
+            ((HttpServletResponse) response).sendRedirect("/imhere/login.xhtml");
+        else*/
             chain.doFilter(request, response);
-        }
+
     }
 
     @Override

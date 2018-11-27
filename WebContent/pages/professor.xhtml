@@ -9,7 +9,7 @@
             <p:panel styleClass="card no-border" toggleable="true"
                      toggleSpeed="300">
                 <h:form id="formDados">
-                    <h1>.: Professors :.
+                    <h1>.: Professor :.
                         <p:commandButton id="btnPesquisar"
                                          styleClass="btnAuto pull-right btn-primary"
                                          actionListener="#{professorController.abrirListProfessor}"
@@ -26,38 +26,31 @@
                                      styleClass="ui-fluid card">
 
                             <h:panelGroup>
-                                <div class="ui-material">
-                                    <p:inputText id="nomeInput"
-                                                 value="#{professorController.entity.nome}"/>
-                                    <p:outputLabel value="Nome" for="nomeInput"/>
-                                </div>
+                                <h:outputText value="Nome" for="nomeInput"/>
+                                <p:inputText id="nomeInput"
+                                             value="#{professorController.entity.nome}"/>
                             </h:panelGroup>
 
                             <h:panelGroup>
-                                <div class="ui-material">
-                                    <p:inputText id="matriculaInput"
-                                                 value="#{professorController.entity.matricula}"/>
-                                    <p:outputLabel value="Matrícula" for="matriculaInput"/>
-                                </div>
+                                <h:outputText value="Matrícula" for="matriculaInput"/>
+                                <p:inputText id="matriculaInput"
+                                             value="#{professorController.entity.matricula}"/>
                             </h:panelGroup>
 
                             <h:panelGroup>
-                                <div class="ui-material">
-                                    <p:inputText id="emailInput" type="email"
-                                                 value="#{professorController.entity.email}"/>
-                                    <p:outputLabel value="Email" for="emailInput"/>
-                                </div>
+                                <h:outputText value="Email" for="emailInput"/>
+                                <p:inputText id="emailInput" type="email"
+                                             value="#{professorController.entity.email}"/>
                             </h:panelGroup>
 
                             <h:panelGroup>
-                                <div class="ui-material">
-                                    <p:inputMask id="telefoneInput" mask="(99) 99999-9999"
-                                                 value="#{professorController.entity.telefone}"/>
-                                    <p:outputLabel value="Telefone" for="nomeInput"/>
-                                </div>
+                                <h:outputText value="Telefone" for="nomeInput"/>
+                                <p:inputMask id="telefoneInput" mask="(99) 99999-9999"
+                                             value="#{professorController.entity.telefone}"/>
                             </h:panelGroup>
 
                         </p:panelGrid>
+
                         <div class="text-center ui-material">
                             <p:commandButton id="btnIncluir"
                                              value="Incluir" icon="fa fa-plus"
@@ -79,6 +72,7 @@
                                              process="@this,gridDados" update="gridDados"
                                              styleClass="btnAuto btn-primary"
                                              actionListener="#{professorController.limpar}"/>
+
                         </div>
                     </div>
                 </h:form>

@@ -21,46 +21,38 @@
 
                     <div style="text-align: left;"
                          class="ui-fluid #{layoutMB.flat ? 'ui-flat':''} ">
-                        <p:panelGrid id="gridDados" columns="2"
-                                     columnClasses="ui-grid-col-6, ui-grid-col-6" layout="grid"
+                        <p:panelGrid id="gridDados" columns="2" layout="grid"
+                                     columnClasses="ui-grid-col-6, ui-grid-col-6"
                                      styleClass="ui-fluid card">
-
                             <h:panelGroup>
-                                <div class="ui-material">
-                                    <p:inputText id="pinInput" disabled="true"
-                                                 value="#{atividadeController.entity.pin}"/>
-                                    <p:outputLabel value="Nome" for="nomeInput"/>
-                                </div>
+                                <h:outputText value="Nome" for="nomeInput"/>
+                                <p:inputText id="pinInput" disabled="true"
+                                             value="#{atividadeController.entity.pin}"/>
                             </h:panelGroup>
 
                             <h:panelGroup>
-                                <div class="ui-material">
-                                    <p:calendar id="dataInput" mask="true" pattern="dd/MM/yyyy"
-                                                value="#{atividadeController.entity.data}"
-                                                showOn="button"/>
-                                    <p:outputLabel value="Data" for="dataInput"/>
-                                </div>
+                                <h:outputText value="Data" for="dataInput"/>
+                                <p:calendar id="dataInput" mask="true" pattern="dd/MM/yyyy"
+                                            value="#{atividadeController.entity.data}"
+                                            showOn="button"/>
                             </h:panelGroup>
 
                             <h:panelGroup>
-                                <div class="ui-material">
-                                    <p:inputText id="duracaoInput"
-                                                 value="#{atividadeController.entity.duracao}"/>
-                                    <p:outputLabel value="Duração" for="duracaoInput"/>
-                                </div>
+                                <h:outputText value="Duração" for="duracaoInput"/>
+                                <p:inputText id="duracaoInput"
+                                             value="#{atividadeController.entity.duracao}"/>
                             </h:panelGroup>
+
                         </p:panelGrid>
+                        <br/>
                         <p:panelGrid id="gridDados2" columns="1"
-                                     columnClasses="ui-grid-col-6, ui-grid-col-6" layout="grid"
+                                     columnClasses="ui-grid-col-12" layout="grid"
                                      styleClass="ui-fluid card">
                             <h:panelGroup>
-                                <div class="ui-material">
-                                    <p:inputTextarea id="nomeInput"
-                                                     value="#{atividadeController.entity.descricao}"/>
-                                    <p:outputLabel value="Nome" for="nomeInput"/>
-                                </div>
+                                <h:outputText value="Descrição" for="descricaoInput"/>
+                                <p:inputTextarea id="descricaoInput"
+                                                 value="#{atividadeController.entity.descricao}"/>
                             </h:panelGroup>
-
                         </p:panelGrid>
                         <div class="text-center ui-material">
                             <p:commandButton id="btnIncluir"

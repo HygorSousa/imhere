@@ -21,32 +21,25 @@
 
                     <div style="text-align: left;"
                          class="ui-fluid #{layoutMB.flat ? 'ui-flat':''} ">
-                        <p:panelGrid id="gridDados" columns="2"
-                                     columnClasses="ui-grid-col-6, ui-grid-col-6" layout="grid"
+                        <p:panelGrid id="gridDados" columns="2" layout="grid"
+                                     columnClasses="ui-grid-col-6, ui-grid-col-6"
                                      styleClass="ui-fluid card">
-
                             <h:panelGroup>
-                                <div class="ui-material">
-                                    <p:inputText id="nomeInput"
-                                                 value="#{coordenadorController.entity.nome}"/>
-                                    <p:outputLabel value="Nome" for="nomeInput"/>
-                                </div>
+                                <h:outputText value="Nome" for="nomeInput"/>
+                                <p:inputText id="nomeInput"
+                                             value="#{coordenadorController.entity.nome}"/>
                             </h:panelGroup>
 
                             <h:panelGroup>
-                                <div class="ui-material">
-                                    <p:inputText id="matriculaInput"
-                                                 value="#{coordenadorController.entity.matricula}"/>
-                                    <p:outputLabel value="Matrícula" for="matriculaInput"/>
-                                </div>
+                                <h:outputText value="Matrícula" for="matriculaInput"/>
+                                <p:inputText id="matriculaInput"
+                                             value="#{coordenadorController.entity.matricula}"/>
                             </h:panelGroup>
 
                             <h:panelGroup>
-                                <div class="ui-material">
-                                    <p:inputText id="emailInput" type="email"
-                                                 value="#{coordenadorController.entity.email}"/>
-                                    <p:outputLabel value="Email" for="emailInput"/>
-                                </div>
+                                <h:outputText value="Email" for="emailInput"/>
+                                <p:inputText id="emailInput" type="email"
+                                             value="#{coordenadorController.entity.email}"/>
                             </h:panelGroup>
 
                         </p:panelGrid>
@@ -57,16 +50,19 @@
                                              styleClass="btnAuto btn-primary"
                                              disabled="#{coordenadorController.entity.id != null}"
                                              actionListener="#{coordenadorController.incluir}"/>
+
                             <p:commandButton value="Alterar" icon="fa fa-edit"
                                              process="@this, gridDados" update="gridDados"
                                              styleClass="btnAuto btn-primary"
                                              disabled="#{coordenadorController.entity.id == null}"
                                              actionListener="#{coordenadorController.alterar}"/>
+
                             <p:commandButton value="Excluir" icon="fa fa-remove"
                                              process="@this, gridDados" update="gridDados"
                                              styleClass="btnAuto btn-primary"
                                              disabled="#{coordenadorController.entity.id == null}"
                                              actionListener="#{coordenadorController.remover}"/>
+
                             <p:commandButton value="Limpar" icon="fa fa-eraser"
                                              process="@this,gridDados" update="gridDados"
                                              styleClass="btnAuto btn-primary"

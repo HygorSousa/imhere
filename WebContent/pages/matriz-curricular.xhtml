@@ -26,11 +26,9 @@
                                      styleClass="ui-fluid card">
 
                             <h:panelGroup>
-                                <div class="ui-material">
-                                    <p:inputText id="nomeInput"
+                                <h:outputText value="Nome" for="nomeInput"/>
+                                <p:inputText id="nomeInput"
                                                  value="#{matrizCurricularController.entity.qntHoras}"/>
-                                    <p:outputLabel value="Nome" for="nomeInput"/>
-                                </div>
                             </h:panelGroup>
 
 

@@ -27,35 +27,29 @@
                                      styleClass="ui-fluid card">
 
                             <h:panelGroup>
-                                <div class="ui-material">
-                                    <p:inputText id="nomeInput"
-                                                 value="#{disciplinaController.entity.nome}"/>
-                                    <p:outputLabel value="Nome" for="nomeInput"/>
-                                </div>
+                                <h:outputText value="Nome" for="nomeInput"/>
+                                <p:inputText id="nomeInput"
+                                             value="#{disciplinaController.entity.nome}"/>
                             </h:panelGroup>
 
                             <h:panelGroup>
-                                <div class="ui-material">
-                                    <p:selectOneMenu id="cursoSelect"
-                                                     value="#{disciplinaController.entity.curso}"
-                                                     converter="cursoConverter">
-                                        <f:selectItem itemLabel="Selecione um Curso!"/>
-                                        <f:selectItems
-                                                value="#{disciplinaController.listaCursos}"
-                                                var="curso"
-                                                itemValue="#{curso}"
-                                                itemLabel="#{curso.nome}"/>
-                                    </p:selectOneMenu>
-                                    <p:outputLabel value="Curso" for="cursoSelect"/>
-                                </div>
+                                <h:outputText value="Curso" for="cursoSelect"/>
+                                <p:selectOneMenu id="cursoSelect"
+                                                 value="#{disciplinaController.entity.curso}"
+                                                 converter="cursoConverter">
+                                    <f:selectItem itemLabel="Selecione um Curso!"/>
+                                    <f:selectItems
+                                            value="#{disciplinaController.listaCursos}"
+                                            var="curso"
+                                            itemValue="#{curso}"
+                                            itemLabel="#{curso.nome}"/>
+                                </p:selectOneMenu>
                             </h:panelGroup>
 
                             <h:panelGroup>
-                                <div class="ui-material">
-                                    <p:outputLabel value="Ativo: " for="ativoSwitch"/>
-                                    <p:inputSwitch id="ativoSwitch" required="true"
-                                                   value="#{disciplinaController.entity.ativo}"/>
-                                </div>
+                                <h:outputText value="Ativo: " for="ativoSwitch"/>
+                                <p:inputSwitch id="ativoSwitch" required="true"
+                                               value="#{disciplinaController.entity.ativo}"/>
                             </h:panelGroup>
 
                         </p:panelGrid>
