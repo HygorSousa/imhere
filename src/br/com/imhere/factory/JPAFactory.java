@@ -6,7 +6,7 @@ import javax.persistence.Persistence;
 
 public class JPAFactory {
     private static EntityManagerFactory emf =
-            Persistence.createEntityManagerFactory("Heimdall");
+            Persistence.createEntityManagerFactory("I'm Here");
 
     private JPAFactory() {
     }

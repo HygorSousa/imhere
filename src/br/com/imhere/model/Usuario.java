@@ -1,9 +1,6 @@
 package br.com.imhere.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Usuario extends DefaultEntity<Usuario> {
@@ -18,6 +15,14 @@ public class Usuario extends DefaultEntity<Usuario> {
 
     private TipoUsuario tipoUsuario;
 
+    @OneToOne(mappedBy = "usuario", fetch = FetchType.LAZY)
+    private Aluno aluno;
+
+    @OneToOne(mappedBy = "usuario", fetch = FetchType.LAZY)
+    private Coordenador coordenador;
+
+    @OneToOne(mappedBy = "usuario", fetch = FetchType.LAZY)
+    private Professor professor;
 
     @Override
     public Integer getId() {
@@ -51,5 +56,29 @@ public class Usuario extends DefaultEntity<Usuario> {
 
     public void setTipoUsuario(TipoUsuario tipoUsuario) {
         this.tipoUsuario = tipoUsuario;
+    }
+
+    public Aluno getAluno() {
+        return aluno;
+    }
+
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
+    }
+
+    public Coordenador getCoordenador() {
+        return coordenador;
+    }
+
+    public void setCoordenador(Coordenador coordenador) {
+        this.coordenador = coordenador;
+    }
+
+    public Professor getProfessor() {
+        return professor;
+    }
+
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
     }
 }

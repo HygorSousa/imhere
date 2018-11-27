@@ -17,9 +17,9 @@ public abstract class Controller<T extends DefaultEntity<T>> implements Serializ
     public abstract void limpar();
 
     public T incluir() {
-        Repository<T> repository = new Repository<>(em, clazz);
+        Repository<T> repository = new Repository<>(getEntityManager(), clazz);
         getEntityManager().getTransaction().begin();
-        T result = repository.salvar(getEntity());
+        T result = repository.save(getEntity());
         getEntityManager().getTransaction().commit();
         limpar();
         Util.addInfoMessage("Inclusão realizada com sucesso!");
@@ -27,11 +27,11 @@ public abstract class Controller<T extends DefaultEntity<T>> implements Serializ
     }
 
     public T alterar() {
-        Repository<T> repository = new Repository<>(em, clazz);
+        Repository<T> repository = new Repository<>(getEntityManager(), clazz);
 
         getEntityManager().getTransaction().begin();
 
-        T result = repository.salvar(getEntity());
+        T result = repository.save(getEntity());
 
         getEntityManager().getTransaction().commit();
         limpar();
@@ -40,11 +40,11 @@ public abstract class Controller<T extends DefaultEntity<T>> implements Serializ
     }
 
     public void remover() {
-        Repository<T> repository = new Repository<>(em, clazz);
+        Repository<T> repository = new Repository<>(getEntityManager(), clazz);
 
         getEntityManager().getTransaction().begin();
 
-        repository.remover(getEntity());
+        repository.remove(getEntity());
 
         getEntityManager().getTransaction().commit();
         limpar();

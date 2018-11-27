@@ -6,38 +6,42 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/template/templateListagem.xhtml">
 
-    <ui:define name="titulo"> Listagem de Disciplinas </ui:define>
+    <ui:define name="titulo"> Listagem de Alunos </ui:define>
     <ui:define name="closeButton">
         <p:commandLink id="closeButton"
                        styleClass="ui-icon ui-icon-closethick closeButtonDialog"
-                       actionListener="#{disciplinaListController.closeDialog()}"/>
+                       actionListener="#{alunoListController.closeDialog()}"/>
     </ui:define>
     <ui:define name="conteudoCorpo">
         <f:metadata>
-            <f:viewParam name="chave" value="#{disciplinaListController.chave}"/>
-            <f:viewAction action="#{disciplinaListController.onLoad}"/>
+            <f:viewParam name="chave" value="#{alunoListController.chave}"/>
+            <f:viewAction action="#{alunoListController.onLoad}"/>
         </f:metadata>
         <h:form id="form">
             <p:focus context="form"/>
             <p:dataTable id="dataTable" lazy="true"
-                         value="#{disciplinaListController.lazyModel}"
+                         value="#{alunoListController.lazyModel}"
                          emptyMessage="Nenhum registro encontrado" var="objeto"
                          styleClass="lightTable" rowIndexVar="indice" rows="20"
                          scrollRows="20" scrollHeight="290" liveScroll="true"
                          scrollable="true" selectionMode="single">
                 <p:ajax event="rowSelect"
-                        listener="#{disciplinaListController.onRowSelect}"
+                        listener="#{alunoListController.onRowSelect}"
                 />
                 <f:facet name="header">
-                    #{disciplinaListController.lazyModel.rowCount} registro(s) encontrado(s)
+                    #{alunoListController.lazyModel.rowCount} registro(s) encontrado(s)
                 </f:facet>
                 <p:column styleClass="Wid10 text-center">
                     <f:facet name="header">#</f:facet>
                     <h:outputText value="#{indice + 1}"/>
                 </p:column>
                 <p:column styleClass="Wid50">
+                    <f:facet name="header">Matrícula</f:facet>
+                    <h:outputText value="#{objeto.matricula}"/>
+                </p:column>
+                <p:column styleClass="Wid40">
                     <f:facet name="header">Nome</f:facet>
-                    <h:outputText value="#{objeto.disciplina}"/>
+                    <h:outputText value="#{objeto.nome}"/>
                 </p:column>
             </p:dataTable>
         </h:form>

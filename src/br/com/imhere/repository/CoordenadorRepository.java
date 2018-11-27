@@ -6,13 +6,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.util.List;
 
-public class CoordenadorRepository extends Repository<Coordenador> {
+public class CoordenadorRepository extends DefaultRepository<Coordenador> {
 
     public CoordenadorRepository(EntityManager em) {
-        super(em, Coordenador.class);
+        super(em);
     }
 
-    protected Class<Coordenador> getModelClass() {
+    public Class<Coordenador> getModelClass() {
         return Coordenador.class;
     }
 

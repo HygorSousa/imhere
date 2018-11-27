@@ -6,10 +6,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.util.List;
 
-public class MatrizCurricularRepository extends Repository<MatrizCurricular> {
+public class MatrizCurricularRepository extends DefaultRepository<MatrizCurricular> {
 
     public MatrizCurricularRepository(EntityManager em) {
-        super(em, MatrizCurricular.class);
+        super(em);
     }
 
     protected Class<MatrizCurricular> getModelClass() {

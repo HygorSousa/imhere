@@ -6,6 +6,9 @@ import javax.faces.context.FacesContext;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class Util {
     public static void addInfoMessage(String message) {
@@ -54,6 +57,31 @@ public class Util {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static String encrypt(String value) {
+        try {
+            // Classe utilizada para gerar a criptografia em hash
+            MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
+            byte[] digest = messageDigest.digest(value.getBytes(StandardCharsets.UTF_8));
+
+            // convertendo um array bite em hexadecimal
+            StringBuilder stringBuilder = new StringBuilder();
+            for (byte b : digest) {
+                stringBuilder.append(String.format("%02X", 0xFF & b));
+            }
+
+            return stringBuilder.toString();
+
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+
+        return "Erro ao encriptar";
+    }
+
+    public static String encryptPassword(String value) {
+        return Util.encrypt(Util.encrypt(value.substring(value.length() - 6)));
     }
 
 

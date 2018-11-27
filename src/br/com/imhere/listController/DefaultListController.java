@@ -1,7 +1,7 @@
 package br.com.imhere.listController;
 
 import br.com.imhere.model.DefaultEntity;
-import br.com.imhere.repository.Repository;
+import br.com.imhere.repository.DefaultRepository;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.SortOrder;
@@ -18,7 +18,7 @@ public class DefaultListController<T extends DefaultEntity<? super T>> extends L
     private LazyDataModel<Object> lazyModel;
 
 
-    public DefaultListController(Repository<T> repository, Boolean modal, Boolean draggable,
+    public DefaultListController(DefaultRepository<T> repository, Boolean modal, Boolean draggable,
                                  Boolean resizable, Object contentHeight, Object contentWidth, String xhtmlPageName) {
         super(repository, modal, draggable, resizable, contentHeight, contentWidth, xhtmlPageName);
         this.init();

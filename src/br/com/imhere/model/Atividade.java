@@ -19,6 +19,10 @@ public class Atividade extends DefaultEntity<Atividade> {
 
     private double duracao;
 
+    @ManyToOne
+    @JoinColumn(name = "idaluno")
+    private Aluno aluno;
+
     @Override
     public Integer getId() {
         return id;
@@ -59,5 +63,13 @@ public class Atividade extends DefaultEntity<Atividade> {
 
     public void setDuracao(double duracao) {
         this.duracao = duracao;
+    }
+
+    public Aluno getAluno() {
+        return aluno;
+    }
+
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
     }
 }

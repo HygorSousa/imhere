@@ -6,23 +6,22 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.util.List;
 
-public class AlunoRepository extends Repository<Aluno> {
+public class AlunoRepository extends DefaultRepository<Aluno> {
 
     public AlunoRepository(EntityManager em) {
-        super(em, Aluno.class);
+        super(em);
     }
 
     protected Class<Aluno> getModelClass() {
         return Aluno.class;
     }
 
-    @Override
     public List<Object> buscarLazy(String search, Integer first, Integer pageSize, Integer lim) {
         Query query = getEntityManager().createNativeQuery(
                 "select " +
-                        "   alu.id, alu.nome " +
+                        "   alu.id, alu.nome, alu.matricula " +
                         "from  aluno alu " +
-                        "where alu.nome ilike ?1 " +
+                        "where alu.nome ilike ?1 or alu.matricula ilike ?1 " +
                         "ORDER BY alu.nome");
         query.setParameter(1, "%" + search + "%");
 
@@ -32,7 +31,6 @@ public class AlunoRepository extends Repository<Aluno> {
         return buscarSQL(query);
     }
 
-    @Override
     public Long buscarTodosRegistros(String search) {
         Query query = getEntityManager().createNativeQuery(
                 "select " +
@@ -45,4 +43,19 @@ public class AlunoRepository extends Repository<Aluno> {
     }
 
 
+    public List<Aluno> buscarComplete(String search, int limit) {
+        Query query = getEntityManager().createNativeQuery(
+                "select " +
+                        "   alu.* " +
+                        "from aluno alu " +
+                        "where (" +
+                        "   alu.nome ilike ?1 or " +
+                        "   alu.matricula ilike ?1" +
+                        ") order by alu.nome " +
+                        "limit ?2", Aluno.class);
+        query.setParameter(1, "%" + search + "%");
+        query.setParameter(2, limit);
+
+        return buscar(query);
+    }
 }

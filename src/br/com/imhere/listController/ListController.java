@@ -3,7 +3,7 @@ package br.com.imhere.listController;
 
 import br.com.imhere.application.SelectionListener;
 import br.com.imhere.model.DefaultEntity;
-import br.com.imhere.repository.Repository;
+import br.com.imhere.repository.DefaultRepository;
 import org.primefaces.PrimeFaces;
 import org.primefaces.event.SelectEvent;
 
@@ -25,7 +25,7 @@ public abstract class ListController<T extends DefaultEntity<? super T>> impleme
     protected List<Object> list;
     protected String listName;
     protected SelectionListener<T> listener;
-    protected Repository<T> repository;
+    protected DefaultRepository<T> repository;
     private Boolean modal;
     private Boolean draggable;
     private Boolean resizable;
@@ -33,7 +33,7 @@ public abstract class ListController<T extends DefaultEntity<? super T>> impleme
     private Object contentWidth;
     protected String chave = "";
 
-    public ListController(Repository<T> repository, Boolean modal, Boolean draggable, Boolean resizable, Object contentHeight, Object contentWidth, String xhtmlPageName) {
+    public ListController(DefaultRepository<T> repository, Boolean modal, Boolean draggable, Boolean resizable, Object contentHeight, Object contentWidth, String xhtmlPageName) {
         this.modal = modal;
         this.draggable = draggable;
         this.resizable = resizable;
@@ -150,11 +150,11 @@ public abstract class ListController<T extends DefaultEntity<? super T>> impleme
         onSelect(entity);
     }
 
-    public Repository<T> getRepository() {
+    public DefaultRepository<T> getRepository() {
         return repository;
     }
 
-    public void setRepository(Repository<T> repository) {
+    public void setRepository(DefaultRepository<T> repository) {
         this.repository = repository;
     }
 

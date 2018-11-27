@@ -6,13 +6,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.util.List;
 
-public class AtividadeRepository extends Repository<Atividade> {
+public class AtividadeRepository extends DefaultRepository<Atividade> {
 
     public AtividadeRepository(EntityManager em) {
-        super(em, Atividade.class);
+        super(em);
     }
 
-    protected Class<Atividade> getModelClass() {
+    public Class<Atividade> getModelClass() {
         return Atividade.class;
     }
 
@@ -20,10 +20,10 @@ public class AtividadeRepository extends Repository<Atividade> {
     public List<Object> buscarLazy(String search, Integer first, Integer pageSize, Integer lim) {
         Query query = getEntityManager().createNativeQuery(
                 "select " +
-                        "   ati.id, ati.nome " +
+                        "   ati.id, ati.pin, ati.descricao " +
                         "from  atividade ati " +
-                        "where ati.nome ilike ?1 " +
-                        "ORDER BY ati.nome");
+                        "where ati.pin ilike ?1 or ati.descricao ilike ?1 " +
+                        "ORDER BY ati.pin");
         query.setParameter(1, "%" + search + "%");
 
         query.setFirstResult(first);
@@ -38,7 +38,7 @@ public class AtividadeRepository extends Repository<Atividade> {
                 "select " +
                         "   count(1) as count " +
                         "from  atividade ati " +
-                        "where ati.nome ilike ?1 ");
+                        "where ati.pin ilike ?1 or ati.descricao ilike ?1 ");
         query.setParameter(1, "%" + search + "%");
 
         return (Long) buscarResultadoUnico(query);

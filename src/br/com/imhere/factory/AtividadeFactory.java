@@ -1,11 +1,10 @@
 package br.com.imhere.factory;
 
-
-import br.com.imhere.model.Disciplina;
+import br.com.imhere.model.Atividade;
 
 public class AtividadeFactory {
-    public static Disciplina initialize() {
-        Disciplina t = new Disciplina();
+    public static Atividade initialize() {
+        Atividade t = new Atividade();
         return t;
     }
 }

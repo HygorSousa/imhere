@@ -18,8 +18,9 @@ public class Aluno extends DefaultEntity<Aluno> {
 
     private String biometria;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @MapsId
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id")
+    @MapsId("id")
     private Usuario usuario;
 
     @Override
@@ -78,5 +79,12 @@ public class Aluno extends DefaultEntity<Aluno> {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    @Override
+    public String toString() {
+        if (this.matricula != null && this.nome != null)
+            return this.matricula.concat(" - ").concat(this.nome);
+        return "";
     }
 }

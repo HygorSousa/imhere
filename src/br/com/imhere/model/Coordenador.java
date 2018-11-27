@@ -1,7 +1,6 @@
 package br.com.imhere.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Coordenador extends DefaultEntity<Coordenador> {
@@ -15,6 +14,10 @@ public class Coordenador extends DefaultEntity<Coordenador> {
 
     private String email;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id")
+    @MapsId("id")
+    private Usuario usuario;
 
     @Override
     public Integer getId() {
@@ -50,5 +53,11 @@ public class Coordenador extends DefaultEntity<Coordenador> {
         this.email = email;
     }
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
 
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 }

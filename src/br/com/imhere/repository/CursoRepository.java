@@ -6,10 +6,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.util.List;
 
-public class CursoRepository extends Repository<Curso> {
+public class CursoRepository extends DefaultRepository<Curso> {
 
     public CursoRepository(EntityManager em) {
-        super(em, Curso.class);
+        super(em);
     }
 
     protected Class<Curso> getModelClass() {

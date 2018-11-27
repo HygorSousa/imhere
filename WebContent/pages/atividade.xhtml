@@ -25,9 +25,22 @@
                                      columnClasses="ui-grid-col-6, ui-grid-col-6"
                                      styleClass="ui-fluid card">
                             <h:panelGroup>
-                                <h:outputText value="Nome" for="nomeInput"/>
+                                <h:outputText value="PIN" for="pinInput"/>
                                 <p:inputText id="pinInput" disabled="true"
                                              value="#{atividadeController.entity.pin}"/>
+                            </h:panelGroup>
+
+                            <h:panelGroup>
+                                <h:outputText value="Aluno" for="alunoInput"/>
+                                <p:autoComplete id="alunoInput" forceSelection="true"
+                                                completeMethod="#{atividadeController.completeAluno}"
+                                                var="aluno" itemLabel="#{aluno}"
+                                                itemValue="#{aluno}" converter="alunoConverter"
+                                                dropdown="true" required="true"
+                                                value="#{atividadeController.entity.aluno}">
+                                    <p:ajax update="alunoInput" event="query" global="false"/>
+                                    <p:ajax event="itemSelect" global="false" update="alunoInput"/>
+                                </p:autoComplete>
                             </h:panelGroup>
 
                             <h:panelGroup>

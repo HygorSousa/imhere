@@ -4,7 +4,7 @@ public enum TipoUsuario {
 
     COORDENADOR(0, "Coordenador"),
     PROFESSOR(1, "Professor"),
-    ALUNON(2, "Aluno");
+    ALUNO(2, "Aluno");
 
     private int valor;
     private String label;

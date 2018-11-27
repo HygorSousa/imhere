@@ -7,24 +7,22 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.util.List;
 
-public class DisciplinaRepository extends Repository<Disciplina> {
+public class DisciplinaRepository extends DefaultRepository<Disciplina> {
 
     public DisciplinaRepository(EntityManager em) {
-        super(em, Disciplina.class);
+        super(em);
     }
 
     protected Class<Disciplina> getModelClass() {
         return Disciplina.class;
     }
 
-    @Override
     public List<Object> buscarLazy(String search, Integer first, Integer pageSize, Integer lim) {
         Query query = getEntityManager().createNativeQuery(
                 "select " +
-                        "   dis.id, dis.nome as disciplina, cur.nome as curso " +
+                        "   dis.id, dis.nome as disciplina " +
                         "from disciplina dis " +
-                        "inner join curso cur on dis.idcurso = cur.id " +
-                        "where (dis.nome ilike ?1 and cur.nome ilike ?1)" +
+                        "where dis.nome ilike ?1 " +
                         "ORDER by dis.nome");
         query.setParameter(1, "%" + search + "%");
 
@@ -34,15 +32,13 @@ public class DisciplinaRepository extends Repository<Disciplina> {
         return buscarSQL(query);
     }
 
-    @Override
     public Long buscarTodosRegistros(String search) {
 
         Query query = getEntityManager().createNativeQuery(
                 "select " +
                         "   count(1) as count " +
                         "from disciplina dis " +
-                        "inner join curso cur on dis.idcurso = cur.id " +
-                        "where (dis.nome ilike ?1 and cur.nome ilike ?1)");
+                        "where dis.nome ilike ?1 ");
         query.setParameter(1, "%" + search + "%");
 
         return (Long) buscarResultadoUnico(query);

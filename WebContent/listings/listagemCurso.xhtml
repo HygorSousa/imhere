@@ -10,26 +10,26 @@
     <ui:define name="closeButton">
         <p:commandLink id="closeButton"
                        styleClass="ui-icon ui-icon-closethick closeButtonDialog"
-                       actionListener="#{disciplinaListController.closeDialog()}"/>
+                       actionListener="#{cursoListController.closeDialog()}"/>
     </ui:define>
     <ui:define name="conteudoCorpo">
         <f:metadata>
-            <f:viewParam name="chave" value="#{disciplinaListController.chave}"/>
-            <f:viewAction action="#{disciplinaListController.onLoad}"/>
+            <f:viewParam name="chave" value="#{cursoListController.chave}"/>
+            <f:viewAction action="#{cursoListController.onLoad}"/>
         </f:metadata>
         <h:form id="form">
             <p:focus context="form"/>
             <p:dataTable id="dataTable" lazy="true"
-                         value="#{disciplinaListController.lazyModel}"
+                         value="#{cursoListController.lazyModel}"
                          emptyMessage="Nenhum registro encontrado" var="objeto"
                          styleClass="lightTable" rowIndexVar="indice" rows="20"
                          scrollRows="20" scrollHeight="290" liveScroll="true"
                          scrollable="true" selectionMode="single">
                 <p:ajax event="rowSelect"
-                        listener="#{disciplinaListController.onRowSelect}"
+                        listener="#{cursoListController.onRowSelect}"
                 />
                 <f:facet name="header">
-                    #{disciplinaListController.lazyModel.rowCount} registro(s) encontrado(s)
+                    #{cursoListController.lazyModel.rowCount} registro(s) encontrado(s)
                 </f:facet>
                 <p:column styleClass="Wid10 text-center">
                     <f:facet name="header">#</f:facet>
@@ -37,7 +37,7 @@
                 </p:column>
                 <p:column styleClass="Wid50">
                     <f:facet name="header">Nome</f:facet>
-                    <h:outputText value="#{objeto.disciplina}"/>
+                    <h:outputText value="#{objeto.nome}"/>
                 </p:column>
             </p:dataTable>
         </h:form>
