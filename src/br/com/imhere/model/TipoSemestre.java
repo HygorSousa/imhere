@@ -1,14 +1,14 @@
 package br.com.imhere.model;
 
 public enum TipoSemestre {
-    PRIMEIROSEMESTRE(1, "1º Semestre"),
-    SEGUNDOSEMESTRE(2, "2º Semestre");
+    PRIMEIROSEMESTRE(0, "1º Semestre"),
+    SEGUNDOSEMESTRE(1, "2º Semestre");
 
     private final Integer valor;
     private final String label;
 
-    TipoSemestre(Integer valorOpcao, String label) {
-        this.valor = valorOpcao;
+    TipoSemestre(Integer valor, String label) {
+        this.valor = valor;
         this.label = label;
     }
 

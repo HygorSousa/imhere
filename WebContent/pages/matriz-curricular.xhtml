@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
 <ui:composition template="/template/template.xhtml">
     <ui:define name="conteudo">
         <div class="ui-g-12">
             <p:panel styleClass="card no-border" toggleable="true"
                      toggleSpeed="300">
                 <h:form id="formDados">
-                    <h1>.: MatrizCurriculars :.
+                    <h1>.: Matriz Curricular :.
                         <p:commandButton id="btnPesquisar"
                                          styleClass="btnAuto pull-right btn-primary"
                                          actionListener="#{matrizCurricularController.abrirListMatrizCurricular}"
@@ -26,11 +26,89 @@
                                      styleClass="ui-fluid card">
 
                             <h:panelGroup>
-                                <h:outputText value="Nome" for="nomeInput"/>
-                                <p:inputText id="nomeInput"
-                                                 value="#{matrizCurricularController.entity.qntHoras}"/>
+                                <h:outputText value="Ano" for="anoInput"/>
+                                <p:inputText id="anoInput"
+                                             value="#{matrizCurricularController.entity.semestre.ano}"/>
                             </h:panelGroup>
 
+                            <h:panelGroup>
+                                <h:outputText value="Semestre" for="semestreInput"/>
+                                <p:selectOneMenu id="semestreInput"
+                                                 value="#{matrizCurricularController.entity.semestre.semestre}">
+                                    <f:selectItem itemLabel="Selecione uma opção..." itemValue="#{null}"/>
+                                    <f:selectItems
+                                            value="#{matrizCurricularController.entity.semestre.tipoSemestreValues}"
+                                            var="semestre" itemLabel="#{semestre.label}" itemValue="#{semestre}"/>
+                                </p:selectOneMenu>
+                            </h:panelGroup>
+
+                            <h:panelGroup>
+                                <h:outputText value="Disciplina" for="disciplinaInput"/>
+                                <p:selectOneMenu id="disciplinaInput"
+                                                 value="#{matrizCurricularController.entity.disciplina}">
+                                    <f:selectItem itemLabel="Selecione uma opção..." itemValue="#{null}"/>
+                                    <f:selectItems value="#{matrizCurricularController.disciplinaList}"
+                                                   var="disciplina" itemValue="#{disciplina}"
+                                                   itemLabel="#{disciplina.nome}"/>
+                                </p:selectOneMenu>
+                            </h:panelGroup>
+
+                            <h:panelGroup>
+                                <h:outputText value="Curso" for="cursoInput"/>
+                                <p:selectOneMenu id="cursoInput"
+                                                 value="#{matrizCurricularController.entity.curso}">
+                                    <f:selectItem itemLabel="Selecione uma opção..." itemValue="#{null}"/>
+                                    <f:selectItems value="#{matrizCurricularController.cursoList}"
+                                                   var="curso" itemValue="#{curso}"
+                                                   itemLabel="#{curso.nome}"/>
+                                </p:selectOneMenu>
+                            </h:panelGroup>
+
+
+                            <h:panelGroup>
+                                <h:outputText value="Professor" for="professorInput"/>
+                                <p:autoComplete id="professorInput" forceSelection="true"
+                                                completeMethod="#{matrizCurricularController.completeProfessor}"
+                                                var="professor" itemLabel="#{professor}"
+                                                itemValue="#{professor}" converter="professorConverter"
+                                                dropdown="true" required="true"
+                                                value="#{matrizCurricularController.entity.professor}">
+                                    <p:ajax update="professorInput" event="query" global="false"/>
+                                    <p:ajax event="itemSelect" global="false" update="professorInput"/>
+                                </p:autoComplete>
+                            </h:panelGroup>
+
+                            <h:panelGroup>
+                                <h:outputText value="Aluno" for="alunoInput"/>
+                                <p:autoComplete id="alunoInput" forceSelection="true"
+                                                completeMethod="#{matrizCurricularController.completeAluno}"
+                                                var="aluno" itemLabel="#{aluno}"
+                                                itemValue="#{aluno}" converter="alunoConverter"
+                                                dropdown="true" required="true"
+                                                value="#{matrizCurricularController.entity.aluno}">
+                                    <p:ajax update="alunoInput" event="query" global="false"/>
+                                    <p:ajax event="itemSelect" global="false" update="alunoInput"/>
+                                </p:autoComplete>
+                            </h:panelGroup>
+
+                            <h:panelGroup>
+                                <h:outputText value="Coordenador" for="coordenadorInput"/>
+                                <p:autoComplete id="coordenadorInput" forceSelection="true"
+                                                completeMethod="#{matrizCurricularController.completeCoordenador}"
+                                                var="coordenador" itemLabel="#{coordenador}"
+                                                itemValue="#{coordenador}" converter="coordenadorConverter"
+                                                dropdown="true" required="true"
+                                                value="#{matrizCurricularController.entity.coordenador}">
+                                    <p:ajax update="coordenadorInput" event="query" global="false"/>
+                                    <p:ajax event="itemSelect" global="false" update="coordenadorInput"/>
+                                </p:autoComplete>
+                            </h:panelGroup>
+
+                            <h:panelGroup>
+                                <h:outputText value="Quantidade de horas" for="qnthrsInput"/>
+                                <p:inputText id="qnthrsInput"
+                                             value="#{matrizCurricularController.entity.qntHoras}"/>
+                            </h:panelGroup>
 
                         </p:panelGrid>
                         <div class="text-center ui-material">

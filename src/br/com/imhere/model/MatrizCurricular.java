@@ -28,6 +28,10 @@ public class MatrizCurricular extends DefaultEntity<MatrizCurricular> {
     private Professor professor;
 
     @ManyToOne
+    @JoinColumn(name = "idcoordenador")
+    private Coordenador coordenador;
+
+    @ManyToOne
     @JoinColumn(name = "idsemestre")
     private Semestre semestre;
 
@@ -87,5 +91,13 @@ public class MatrizCurricular extends DefaultEntity<MatrizCurricular> {
 
     public void setSemestre(Semestre semestre) {
         this.semestre = semestre;
+    }
+
+    public Coordenador getCoordenador() {
+        return coordenador;
+    }
+
+    public void setCoordenador(Coordenador coordenador) {
+        this.coordenador = coordenador;
     }
 }

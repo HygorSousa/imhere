@@ -45,4 +45,20 @@ public class ProfessorRepository extends DefaultRepository<Professor> {
     }
 
 
+    public List<Professor> buscarComplete(String search, int limit) {
+        Query query = getEntityManager().createNativeQuery(
+                "select " +
+                        "   pro.* " +
+                        "from professor pro " +
+                        "where (" +
+                        "   pro.nome ilike ?1 or " +
+                        "   pro.matricula ilike ?1" +
+                        ") order by pro.nome " +
+                        "limit ?2", Professor.class);
+        query.setParameter(1, "%" + search + "%");
+        query.setParameter(2, limit);
+
+        return buscar(query);
+    }
+
 }

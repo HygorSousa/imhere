@@ -60,4 +60,11 @@ public class Coordenador extends DefaultEntity<Coordenador> {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
+
+    @Override
+    public String toString() {
+        if (this.matricula != null && this.nome != null)
+            return this.matricula.concat(" - ").concat(this.nome);
+        return "";
+    }
 }

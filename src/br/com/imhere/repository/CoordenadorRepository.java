@@ -1,5 +1,6 @@
 package br.com.imhere.repository;
 
+
 import br.com.imhere.model.Coordenador;
 
 import javax.persistence.EntityManager;
@@ -44,5 +45,20 @@ public class CoordenadorRepository extends DefaultRepository<Coordenador> {
         return (Long) buscarResultadoUnico(query);
     }
 
+    public List<Coordenador> buscarComplete(String search, int limit) {
+        Query query = getEntityManager().createNativeQuery(
+                "select " +
+                        "   coo.* " +
+                        "from coordenador coo " +
+                        "where (" +
+                        "   coo.nome ilike ?1 or " +
+                        "   coo.matricula ilike ?1" +
+                        ") order by coo.nome " +
+                        "limit ?2", Coordenador.class);
+        query.setParameter(1, "%" + search + "%");
+        query.setParameter(2, limit);
+
+        return buscar(query);
+    }
 
 }
